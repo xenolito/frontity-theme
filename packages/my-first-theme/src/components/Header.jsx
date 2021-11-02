@@ -4,7 +4,7 @@ import Link from "@frontity/components/link"
 
 const Header = ({ state, actions }) => {
   const data = state.source.get(state.router.link)
-  console.log(data)
+  //   console.log(data)
 
   return (
     <HeaderContainer isPostType={data.isPostType} isPage={data.isPage}>

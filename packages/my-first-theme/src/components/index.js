@@ -8,10 +8,10 @@ import Page from "./Page"
 import Loading from "./Loading"
 import Error from "./Error"
 import Header from "./Header"
+import Footer from "./Footer"
 
 const Root = ({ state, actions }) => {
   const data = state.source.get(state.router.link)
-  // console.log(data)
 
   return (
     <>
@@ -26,6 +26,11 @@ const Root = ({ state, actions }) => {
         styles={css`
           html {
             font-family: system-ui, Verdana, Arial, sans-serif;
+          }
+          html,
+          body {
+            width: 100vw;
+            overflow-x: hidden;
           }
           * {
             margin: 0;
@@ -45,6 +50,7 @@ const Root = ({ state, actions }) => {
           <Error when={data.isError} />
         </Switch>
       </Main>
+      <Footer />
     </>
   )
 }

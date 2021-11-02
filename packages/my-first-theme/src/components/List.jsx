@@ -6,7 +6,7 @@ const List = ({ state, actions, libraries }) => {
   const data = state.source.get(state.router.link)
   const Html2React = libraries.html2react.Component
 
-  console.log(data)
+  // console.log(data)
 
   return (
     <>

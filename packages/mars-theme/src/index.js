@@ -1,7 +1,7 @@
-import Theme from "./components";
-import image from "@frontity/html2react/processors/image";
-import iframe from "@frontity/html2react/processors/iframe";
-import link from "@frontity/html2react/processors/link";
+import Theme from "./components"
+import image from "@frontity/html2react/processors/image"
+import iframe from "@frontity/html2react/processors/iframe"
+import link from "@frontity/html2react/processors/link"
 
 const marsTheme = {
   name: "@frontity/mars-theme",
@@ -22,8 +22,8 @@ const marsTheme = {
       menu: [],
       isMobileMenuOpen: false,
       featured: {
-        showOnList: false,
-        showOnPost: false,
+        showOnList: true,
+        showOnPost: true,
       },
     },
   },
@@ -35,10 +35,10 @@ const marsTheme = {
   actions: {
     theme: {
       toggleMobileMenu: ({ state }) => {
-        state.theme.isMobileMenuOpen = !state.theme.isMobileMenuOpen;
+        state.theme.isMobileMenuOpen = !state.theme.isMobileMenuOpen
       },
       closeMobileMenu: ({ state }) => {
-        state.theme.isMobileMenuOpen = false;
+        state.theme.isMobileMenuOpen = false
       },
     },
   },
@@ -52,6 +52,6 @@ const marsTheme = {
       processors: [image, iframe, link],
     },
   },
-};
+}
 
-export default marsTheme;
+export default marsTheme

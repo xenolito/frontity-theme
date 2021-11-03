@@ -2,8 +2,8 @@ import React from "react"
 import { connect, Global, css, styled, Head } from "frontity"
 import Link from "@frontity/components/link"
 import Switch from "@frontity/components/switch"
-import List from "./List"
-import Post from "./Post"
+import ListItems from "./list/List-items"
+import PostList from "./post/post-list"
 import Page from "./Page"
 import Loading from "./Loading"
 import Error from "./Error"
@@ -43,8 +43,8 @@ const Root = ({ state, actions }) => {
       <Main>
         <Switch>
           <Loading when={data.isFetching} />
-          <List when={data.isArchive} />
-          <Post when={data.isPost} />
+          <ListItems when={data.isArchive} />
+          <PostList when={data.isPost} />
           <Page when={data.isPage} />
           <Page when={data.isDestinations} />
           <Error when={data.isError} />

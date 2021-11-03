@@ -6,21 +6,31 @@ const List = ({ state, actions, libraries }) => {
   const data = state.source.get(state.router.link)
   const Html2React = libraries.html2react.Component
 
-  // console.log(data)
+  // console.log(state.source.attachment)
 
   return (
     <>
       <Items>
         {data.items.map((item) => {
           const post = state.source[item.type][item.id]
+          const featured_image_obj =
+            state.source.attachment[post.featured_media]
+
+          const feat_img_url = featured_image_obj
+            ? featured_image_obj.media_details.sizes.large?.source_url ||
+              featured_image_obj.source_url
+            : null
+
           return (
-            <div key={item.id} className="archive-list-item">
+            <ListCard key={item.id} className="archive-list-item">
+              <figure>
+                {feat_img_url ? <img src={feat_img_url} /> : <ImgNotFound />}
+              </figure>
               <Link key={item.id} link={post.link}>
                 {post.title.rendered}
-                <br />
               </Link>
               <Html2React html={post.excerpt.rendered} />
-            </div>
+            </ListCard>
           )
         })}
         <PrevNextNav>
@@ -50,18 +60,46 @@ const List = ({ state, actions, libraries }) => {
 
 export default connect(List)
 
-const Items = styled.div`
-  .archive-list-item {
-    padding-bottom: 0.5rem;
+const Items = styled.div``
 
-    & > a {
-      display: block;
-      margin: 6px 0;
-      font-size: 1.2em;
-      color: steelblue;
-      text-decoration: none;
+const ListCard = styled.div`
+  display: grid;
+  grid-template-columns: 200px auto;
+  grid-template-rows: min-content 1fr;
+  grid-gap: 1rem;
+  padding-bottom: 2rem;
+
+  * {
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  figure {
+    grid-row-start: 1;
+    grid-row-end: 3;
+
+    img {
+      max-height: 250px;
+      object-fit: cover;
+      width: 100%;
     }
   }
+
+  & > a {
+    display: flex;
+    margin: 0;
+    font-size: 1.2em;
+    color: steelblue;
+    text-decoration: none;
+  }
+`
+
+const ImgNotFound = styled.div`
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 150px;
+  background-color: #00000055;
 `
 
 const PrevNextNav = styled.div`

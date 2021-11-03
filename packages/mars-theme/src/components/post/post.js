@@ -1,8 +1,8 @@
-import { useEffect } from "react";
-import { connect, styled } from "frontity";
-import Link from "./link";
-import List from "./list";
-import FeaturedMedia from "./featured-media";
+import { useEffect } from "react"
+import { connect, styled } from "frontity"
+import Link from "../link"
+import List from "../list"
+import FeaturedMedia from "../featured-media"
 
 /**
  * The Post component that Mars uses to render any kind of "post type", like
@@ -25,16 +25,16 @@ import FeaturedMedia from "./featured-media";
  */
 const Post = ({ state, actions, libraries }) => {
   // Get information about the current URL.
-  const data = state.source.get(state.router.link);
+  const data = state.source.get(state.router.link)
   // Get the data of the post.
-  const post = state.source[data.type][data.id];
+  const post = state.source[data.type][data.id]
   // Get the data of the author.
-  const author = state.source.author[post.author];
+  const author = state.source.author[post.author]
   // Get a human readable date.
-  const date = new Date(post.date);
+  const date = new Date(post.date)
 
   // Get the html2react component.
-  const Html2React = libraries.html2react.Component;
+  const Html2React = libraries.html2react.Component
 
   /**
    * Once the post has loaded in the DOM, prefetch both the
@@ -42,9 +42,9 @@ const Post = ({ state, actions, libraries }) => {
    * the home page, everything is ready and it loads instantly.
    */
   useEffect(() => {
-    actions.source.fetch("/");
-    List.preload();
-  }, [actions.source]);
+    actions.source.fetch("/")
+    List.preload()
+  }, [actions.source])
 
   // Load the post, but only if the data is ready.
   return data.isReady ? (
@@ -88,39 +88,39 @@ const Post = ({ state, actions, libraries }) => {
         </Content>
       )}
     </Container>
-  ) : null;
-};
+  ) : null
+}
 
-export default connect(Post);
+export default connect(Post)
 
 const Container = styled.div`
   width: 800px;
   margin: 0;
   padding: 24px;
-`;
+`
 
 const Title = styled.h1`
   margin: 0;
   margin-top: 24px;
   margin-bottom: 8px;
   color: rgba(12, 17, 43);
-`;
+`
 
 const StyledLink = styled(Link)`
   padding: 15px 0;
-`;
+`
 
 const Author = styled.p`
   color: rgba(12, 17, 43, 0.9);
   font-size: 0.9em;
   display: inline;
-`;
+`
 
 const DateWrapper = styled.p`
   color: rgba(12, 17, 43, 0.9);
   font-size: 0.9em;
   display: inline;
-`;
+`
 
 /**
  * This component is the parent of the `content.rendered` HTML. We can use nested
@@ -244,4 +244,4 @@ const Content = styled.div`
       margin-right: 24px;
     }
   }
-`;
+`

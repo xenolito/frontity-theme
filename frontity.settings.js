@@ -10,6 +10,7 @@ const settings = {
   packages: [
     {
       name: "my-first-theme",
+      // name: "@frontity/mars-theme",
     },
     {
       name: "@frontity/wp-source",

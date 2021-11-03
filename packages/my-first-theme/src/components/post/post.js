@@ -2,8 +2,9 @@ import React from "react"
 import { connect, styled, Head } from "frontity"
 import dayjs from "dayjs"
 
-const Post = ({ state, libraries }) => {
-  const data = state.source.get(state.router.link)
+const Post = ({ state, libraries, link }) => {
+  const data = state.source.get(link)
+  // const data = state.source.get(link)
   const post = state.source[data.type][data.id]
   const author = state.source.author[post.author]
   const formattedDate = dayjs(post.date).format("DD/MM/YYYY")

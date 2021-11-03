@@ -9,6 +9,9 @@ const myFirstTheme = {
   state: {
     theme: {
       isUrlVisible: false,
+      autoPrefetch: "in-view",
+      infiniteScrollPagesLimit: 0,
+      infiniteScrollPostsLimit: 10,
     },
   },
   actions: {
